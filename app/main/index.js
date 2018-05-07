@@ -10,7 +10,7 @@ let mainWindow;
 
 if (process.env.NODE_ENV === 'development') {
 	require('electron-debug')({
-		showDevTools: true
+		showDevTools: true,
 	});
 }
 

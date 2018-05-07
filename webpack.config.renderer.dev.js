@@ -4,7 +4,6 @@ import path from 'path';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 import VueLoaderPlugin from 'vue-loader/lib/plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import baseConfig from './webpack.config.base';
 
 
@@ -22,7 +21,7 @@ export default merge(baseConfig, {
 
 	entry: [
 		`webpack-dev-server/client?http://localhost:${port}/`,
-		// 'webpack/hot/only-dev-server', // TODO: enable?
+		'webpack/hot/only-dev-server',
 		path.resolve(__dirname, 'app/renderer/index'),
 	],
 
@@ -60,10 +59,15 @@ export default merge(baseConfig, {
 			'process.env.NODE_ENV': JSON.stringify('development'),
 		}),
 		new VueLoaderPlugin(),
+		new webpack.HotModuleReplacementPlugin(),
 	],
 
 	optimization: {
-		noEmitOnErrors: true, // webpack.NoEmitOnErrorsPlugin()
+		// turn on for development by default, just for sure (and to be future-proof)
+		// instead of new webpack.NamedModulesPlugin()
+		namedModules: true,
+		// instead of  webpack.NoEmitOnErrorsPlugin()
+		noEmitOnErrors: true,
 	},
 
 });

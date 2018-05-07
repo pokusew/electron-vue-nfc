@@ -31,8 +31,9 @@ export default {
 	plugins: [],
 
 	optimization: {
-		namedModules: true, // instead of new webpack.NamedModulesPlugin()
-		//minimize: false, // (true by default for production) https://github.com/babel/minify probably does not work (outputs are even bigger)
+		// true by default for production
+		// https://github.com/babel/minify probably does not work (outputs are even bigger)
+		// minimize: false
 	},
 
 	externals: Object.keys(externals || {}),
