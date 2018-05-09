@@ -36,6 +36,7 @@
 </template>
 
 <script>
+
 	import Hello from './components/Hello.vue';
 
 	// With shell.openExternal(url) is how
@@ -44,17 +45,19 @@
 
 	export default {
 		components: {
-			Hello
+			Hello,
 		},
 		methods: {
 			link: (url) => {
-				shell.openExternal(url)
-			}
-		}
-	}
+				shell.openExternal(url);
+			},
+		},
+	};
+
 </script>
 
 <style>
+
 	html {
 		height: 100%;
 	}
@@ -87,4 +90,5 @@
 		width: auto;
 		height: 100px;
 	}
+
 </style>
